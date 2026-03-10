@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { InputControl } from "../inputControl/InputControl";
 
 export function SignUp() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export function SignUp() {
     <div className={styles.container}>
       <div className={styles.innerBox}>
         <h1 className={styles.heading} >Register</h1>
+        <InputControl label="Name" placeholder="Ingrese su Nombre" onChange={(event)=> setValues((prev)=>({...prev, name:event.target.value})) } />
       </div>
       
     </div>
