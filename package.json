@@ -2,6 +2,7 @@
   "name": "login-firebase-react",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://JuanManuelB001.github.io/login-firebase-react/",
   "type": "module",
   "scripts": {
     "dev": "vite",
