@@ -9,7 +9,7 @@ export function Login(){
                     Login
                 </h1>
                 <div className={styles.footer}>
-                    <b className={styles.error}Error></b>
+                    <b className={styles.error}>Error</b>
                     <button>Login btn</button>
                     <p>Crear Cuenta<span><Link to="/sign-up">Registrar</Link></span></p>
 

@@ -1,7 +1,7 @@
 import styles from "../../css/signUp.module.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { auth } from "../../firebase/Firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { InputControl } from "../inputControl/InputControl";
 
@@ -18,7 +18,8 @@ export function SignUp() {
     }
     setErrorMsg("");
     setSubmitButtonDisabled(true);
-    createUserWithEmailAndPassword(getAuth, values.email, values.passwd)
+
+    createUserWithEmailAndPassword(auth, values.email, values.passwd)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
@@ -37,7 +38,18 @@ export function SignUp() {
     <div className={styles.container}>
       <div className={styles.innerBox}>
         <h1 className={styles.heading} >Register</h1>
-        <InputControl label="Name" placeholder="Ingrese su Nombre" onChange={(event)=> setValues((prev)=>({...prev, name:event.target.value})) } />
+        <InputControl label="Name" placeholder="Enter Name"  type="text" onChange={(event)=> setValues((prev)=>({...prev, name:event.target.value})) } />
+        <InputControl label="Email" type="email" placeholder="Enter Email" onChange={(event)=> setValues((prev)=>({...prev, email:event.target.value})) } />
+        <InputControl label="Password" placeholder="Enter password" type="password" onChange={(event)=> setValues((prev)=> ({...prev, passwd:event.target.value}))} />
+        <div className={styles.footer}>
+          <b className={styles.error} >{errorMsg}</b>
+          <button onClick={registro} disabled={submitButtonDisabled}>Register</button>
+          <p>
+            Si ya tienes una cuenta 
+            <span><Link to="/login">
+            Iniciar Sesion</Link></span>
+          </p>
+        </div>
       </div>
       
     </div>
